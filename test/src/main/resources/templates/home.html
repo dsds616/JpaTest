@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>눈난나누</title>
+</head>
+<body>
+
+    <span th:text="${ test }"></span>
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>제목</th>
+                <th>등록일</th>
+                <th>작성자</th>
+                <th>게시여부</th>
+            </tr>
+
+        </thead>
+        <tr th:each="board, index : ${boards}">
+            <td th:text="${index.index+1}"></td>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.regDtime}"></td>
+            <td>운영자</td>
+            <td th:text="${board.boardStatusCode == 'BS001' ? '게재' : '미게재'}"></td>
+        </tr>
+
+    </table>
+
+
+</body>
+</html>
+
+<script>
+    $(function(){
+
+
+    });
+
+</script>
