@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BoardRepository extends JpaRepository<BoardVo, Long> {
+public interface BoardRepository extends JpaRepository<BoardVo, Long>, BoardRepositoryCustom {
     List<BoardVo> findByTitleContains(String title);
 }

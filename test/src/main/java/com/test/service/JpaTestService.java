@@ -2,6 +2,8 @@ package com.test.service;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.test.domain.board.BoardRepository;
+import com.test.domain.board.BoardRepositoryCustom;
+import com.test.domain.board.BoardRepositoryImpl;
 import com.test.domain.board.BoardVo;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class JpaTestService {
 
     @Resource private BoardRepository boardRepository;
+    @Resource private BoardRepositoryImpl boardRepositoryImpl;
 
     private JPAQueryFactory jpaQueryFactory;
 
@@ -29,6 +32,10 @@ public class JpaTestService {
     }
 
     public List<BoardVo> getBoardList(){
+        BoardVo board = new BoardVo();
+        board.setDelYn("N");
+        System.out.println(boardRepositoryImpl.findDelYn(board));
+
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "regDtime"));
     }
 
